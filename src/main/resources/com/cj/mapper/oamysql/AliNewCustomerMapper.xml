@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cj.mapper.oamysql.AliNewCustomerMapper">
+  <resultMap id="BaseResultMap" type="com.cj.domain.oamysql.AliNewCustomer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="origin_url" jdbcType="VARCHAR" property="originUrl" />
+    <result column="ali_url" jdbcType="VARCHAR" property="aliUrl" />
+    <result column="gmt_identification" jdbcType="VARCHAR" property="gmtIdentification" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="mianbusiness" jdbcType="VARCHAR" property="mianbusiness" />
+    <result column="gmt_get" jdbcType="VARCHAR" property="gmtGet" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, company, origin_url, ali_url, gmt_identification, address, industry, mianbusiness, 
+    gmt_get, gmt_create
+  </sql>
+  <select id="selectByExample" parameterType="com.cj.domain.oamysql.AliNewCustomerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ali_new_customer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ali_new_customer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ali_new_customer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.cj.domain.oamysql.AliNewCustomerExample">
+    delete from ali_new_customer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.cj.domain.oamysql.AliNewCustomer">
+    insert into ali_new_customer (id, company, origin_url, 
+      ali_url, gmt_identification, address, 
+      industry, mianbusiness, gmt_get, 
+      gmt_create)
+    values (#{id,jdbcType=INTEGER}, #{company,jdbcType=VARCHAR}, #{originUrl,jdbcType=VARCHAR}, 
+      #{aliUrl,jdbcType=VARCHAR}, #{gmtIdentification,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{industry,jdbcType=VARCHAR}, #{mianbusiness,jdbcType=VARCHAR}, #{gmtGet,jdbcType=VARCHAR}, 
+      #{gmtCreate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cj.domain.oamysql.AliNewCustomer">
+    insert into ali_new_customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="originUrl != null">
+        origin_url,
+      </if>
+      <if test="aliUrl != null">
+        ali_url,
+      </if>
+      <if test="gmtIdentification != null">
+        gmt_identification,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="mianbusiness != null">
+        mianbusiness,
+      </if>
+      <if test="gmtGet != null">
+        gmt_get,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="originUrl != null">
+        #{originUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="aliUrl != null">
+        #{aliUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtIdentification != null">
+        #{gmtIdentification,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="mianbusiness != null">
+        #{mianbusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtGet != null">
+        #{gmtGet,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.cj.domain.oamysql.AliNewCustomerExample" resultType="java.lang.Integer">
+    select count(*) from ali_new_customer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ali_new_customer
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.company != null">
+        company = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.originUrl != null">
+        origin_url = #{record.originUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aliUrl != null">
+        ali_url = #{record.aliUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gmtIdentification != null">
+        gmt_identification = #{record.gmtIdentification,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.industry != null">
+        industry = #{record.industry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mianbusiness != null">
+        mianbusiness = #{record.mianbusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gmtGet != null">
+        gmt_get = #{record.gmtGet,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ali_new_customer
+    set id = #{record.id,jdbcType=INTEGER},
+      company = #{record.company,jdbcType=VARCHAR},
+      origin_url = #{record.originUrl,jdbcType=VARCHAR},
+      ali_url = #{record.aliUrl,jdbcType=VARCHAR},
+      gmt_identification = #{record.gmtIdentification,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      industry = #{record.industry,jdbcType=VARCHAR},
+      mianbusiness = #{record.mianbusiness,jdbcType=VARCHAR},
+      gmt_get = #{record.gmtGet,jdbcType=VARCHAR},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cj.domain.oamysql.AliNewCustomer">
+    update ali_new_customer
+    <set>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="originUrl != null">
+        origin_url = #{originUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="aliUrl != null">
+        ali_url = #{aliUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtIdentification != null">
+        gmt_identification = #{gmtIdentification,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="mianbusiness != null">
+        mianbusiness = #{mianbusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtGet != null">
+        gmt_get = #{gmtGet,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cj.domain.oamysql.AliNewCustomer">
+    update ali_new_customer
+    set company = #{company,jdbcType=VARCHAR},
+      origin_url = #{originUrl,jdbcType=VARCHAR},
+      ali_url = #{aliUrl,jdbcType=VARCHAR},
+      gmt_identification = #{gmtIdentification,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      mianbusiness = #{mianbusiness,jdbcType=VARCHAR},
+      gmt_get = #{gmtGet,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>
