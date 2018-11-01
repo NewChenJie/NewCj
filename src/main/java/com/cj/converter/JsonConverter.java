@@ -43,7 +43,6 @@ public class JsonConverter implements GenericConverter {
 
     @Override
     public Object convert(Object source, TypeDescriptor sourceType, TypeDescriptor targetType) {
-        if (source == null) { return null; }
         if (sourceType.getType() == String.class) {
             if (targetType.getType() == JSONObject.class) {
                 return JSON.parseObject((String) source);

@@ -5,13 +5,12 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
-
 @Component
 public class BeanKit implements ApplicationContextAware {
 
     private static ApplicationContext context;
 
-    private BeanKit() {}
+    BeanKit() {}
 
     public static ApplicationContext getApplicationContext() {
         return context;

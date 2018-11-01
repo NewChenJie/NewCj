@@ -27,7 +27,7 @@ public class DBInit_OASQLServer {
     @Bean(DataSourceBean)
     //@Profile("dev")
     public DataSource dataSource(DBConfigInfo dbinfo){
-        return DBConfigUtils.getDruid(dbinfo.getOaSqlServer());
+        return DBConfigUtils.getDruid(dbinfo.getOasqlserver());
     }
 
     /**

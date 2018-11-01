@@ -22,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<shiro.version>1.4.0</shiro.version>
 	</properties>
 
 	<dependencies>
@@ -36,9 +37,30 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>3.8</version>
+		</dependency>
+		<dependency>
+			<groupId>tk.mybatis</groupId>
+			<artifactId>mapper</artifactId>
+            <version>4.0.0-beta3</version>
+        </dependency>
+
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<version>5.1.30</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqljdbc4</artifactId>
+			<version>4.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -89,12 +111,29 @@
 			<artifactId>poi-ooxml-schemas</artifactId>
 			<version>3.14-beta1</version>
 		</dependency>
-<!--pagehelper使用-->
-		<!--<dependency>-->
-			<!--<groupId>com.github.pagehelper</groupId>-->
-			<!--<artifactId>pagehelper</artifactId>-->
-			<!--<version>5.1.2</version>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.8.9</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-access</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+		<!--pagehelper使用-->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
@@ -106,7 +145,108 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.46</version>
 		</dependency>
+		<!--shiro-->
+		<!--<dependency>-->
+			<!--<groupId>org.apache.shiro</groupId>-->
+			<!--<artifactId>shiro-spring</artifactId>-->
+			<!--<version>1.3.2</version>-->
+		<!--</dependency>-->
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>4.1.0</version>
+		</dependency>
 
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-redis</artifactId>-->
+		<!--</dependency>-->
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+			<version>5.5.1</version>
+		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4.1211.jre7</version>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<!--rabbitmq -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+		</dependency>
+		<!-- shiro 相关包 -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<!--threadLocal-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>transmittable-thread-local</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<!-- End  -->
+
+		<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.15</version>
+		<exclusions>
+			<exclusion>
+				<groupId>javax.jms</groupId>
+				<artifactId>jms</artifactId>
+			</exclusion>
+			<exclusion>
+				<groupId>com.sun.jdmk</groupId>
+				<artifactId>jmxtools</artifactId>
+			</exclusion>
+			<exclusion>
+				<groupId>com.sun.jmx</groupId>
+				<artifactId>jmxri</artifactId>
+			</exclusion>
+		</exclusions>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -123,33 +263,6 @@
 					<verbose>true</verbose>
 					<overwrite>true</overwrite>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.2</version>
-				<configuration>
-					<verbose>true</verbose>
-					<overwrite>true</overwrite>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.5</version>
-				<configuration>
-					<configurationFile>src/main/resources/GeneratorConfig.xml</configurationFile>
-					<verbose>true</verbose>
-					<overwrite>true</overwrite>
-				</configuration>
-				<executions>
-					<execution>
-						<id>Generate MyBatis Artifacts</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 

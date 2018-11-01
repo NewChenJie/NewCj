@@ -26,8 +26,8 @@ public enum SexEnum {
     }
  public static Map<Integer,SexEnum> enumMap=new HashMap<>(16);
     static {
-        for (SexEnum sexEnum : enumMap.values()) {
-            enumMap.put(sexEnum.id,sexEnum);
+        for (SexEnum eum : SexEnum.values()) {
+            enumMap.put(eum.id,eum);
         }
     }
     public static SexEnum valueOf(Integer type){

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "dbconfig")
 public class DBConfigInfo {
     private DBInfo oaMysql;
-    private DBInfo oaSqlServer;
+    private DBInfo oasqlserver;
     private DBInfo mysql;
+    private DBInfo oapg;
 }

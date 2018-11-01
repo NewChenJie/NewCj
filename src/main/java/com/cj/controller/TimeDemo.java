@@ -1,36 +1,22 @@
 package com.cj.controller;
 
 
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.*;
-import java.time.temporal.IsoFields;
 import java.util.Date;
 
 @RestController
 @RequestMapping("/time1")
 public class TimeDemo {
 
-    @GetMapping("/localtime")
-    public String localTime(@DateTimeFormat(pattern = "yyyy-MM-dd") Date time){
-        LocalDate date = LocalDate.of(1980, 10, 10);
-        long aLong = date.getLong(IsoFields.WEEK_BASED_YEAR);
-        DayOfWeek day = date.getDayOfWeek();
-        DayOfWeek saturday = DayOfWeek.SATURDAY;
-        int value = saturday.getValue();
-        System.out.println(value);
-        String name = saturday.name();
-        System.out.println(name);
-        DayOfWeek d = DayOfWeek.of(6);
-        int value1 = Month.APRIL.getValue();
-        System.out.println(value1);
-        YearMonth now = YearMonth.now();
-        System.out.println(now);
-
-        return null;
+    @PostMapping("/localtime")
+    public String localTime(){
+        LocalDate date = LocalDate.now();
+        System.out.println(date);
+        return date.toString();
     }
 
     private void diff() {
@@ -56,6 +42,7 @@ public class TimeDemo {
         return Date.from(zdt.toInstant());
     }
 
+
     /**
      * Date转换成localDateTime
      * @param date
@@ -64,6 +51,19 @@ public class TimeDemo {
     private LocalDate getLocalDate(Date date) {
         Instant instant = date.toInstant();
         return instant.atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    /**
+     * 日期差
+     * @param start
+     * @param end
+     * @return
+     */
+    private int dayDiff(Date start,Date end){
+        ZoneId zone = ZoneId.systemDefault();
+        LocalDateTime startTime = LocalDateTime.ofInstant(start.toInstant(), zone);
+        LocalDateTime endTime=LocalDateTime.ofInstant(end.toInstant(),zone);
+        return (int)Duration.between(startTime,endTime).toDays();
     }
 
 

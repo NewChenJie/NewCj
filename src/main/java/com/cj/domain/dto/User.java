@@ -1,34 +1,25 @@
 package com.cj.domain.dto;
 
-import cn.afterturn.easypoi.excel.annotation.Excel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import java.util.Date;
-
+/**
+ * shiro 对应数据库用户
+ * @author Administrator
+ */
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    @Excel(name = "id")
-    @NotBlank(message = "该字段不能为空")
-    private String id;
-
-    @Excel(name = "姓名")
-    @Pattern(regexp = "[\\u4E00-\\u9FA5]{2,5}", message = "姓名中文2-5位")
-    private String name;
-
-    @Max(value=25)
-    @Excel(name = "年龄")
-    private Integer age;
-
-    @Excel(name = "生日", importFormat = "yyyy-MM-dd")
-    private Date birthday;
-
+    /** 自增ID */
+    private Long id;
+    /** 账号 */
+    private String username;
+    /** 密码 */
+    private String password;
+    /** 角色名：Shiro 支持多个角色，而且接收参数也是 Set<String> 集合，但这里为了简单起见定义成 String 类型了 */
+    private String roleName;
+    /** 是否禁用 */
+    private boolean locked;
 }
