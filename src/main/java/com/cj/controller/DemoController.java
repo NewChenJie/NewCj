@@ -20,6 +20,7 @@ public class DemoController {
 
     @GetMapping("/hello")
     public KeyValue hello(){
+
         System.out.println(2);
         throw  new Redirect();
     }

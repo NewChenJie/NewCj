@@ -8,7 +8,6 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -50,20 +49,18 @@ public class TimeTest {
         }
         System.out.println(days);
         System.out.println(total.divide(BigDecimal.valueOf(days),2, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(7)));
+
+
     }
+
 
     @Test
     public void testTime5(){
-
-        YearMonth from = YearMonth.from(LocalDate.now());
-        YearMonth now = YearMonth.of(2018, 10);
-        System.out.println(from);
-
-        if (from.equals(now)){
-            System.out.println(1);
-        }
-
+        ArrayList<Integer> list = Lists.newArrayList(1, 2, 3);
+        List<Integer> s = list.stream().filter(x -> x == 1).collect(Collectors.toList());
+        System.out.println(s);
     }
+
 
 }
 

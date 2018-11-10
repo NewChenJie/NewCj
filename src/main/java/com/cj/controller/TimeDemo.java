@@ -49,8 +49,7 @@ public class TimeDemo {
      * @return
      */
     private LocalDate getLocalDate(Date date) {
-        Instant instant = date.toInstant();
-        return instant.atZone(ZoneId.systemDefault()).toLocalDate();
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
     /**
