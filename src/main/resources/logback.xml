@@ -33,6 +33,5 @@
     <logger name="com.github.miemiedev.mybatis.paginator" level="INFO" additivity="false" />
     <root level="INFO" additivity="true">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="GLOBAL_FILE"/>
     </root>
 </configuration> 
